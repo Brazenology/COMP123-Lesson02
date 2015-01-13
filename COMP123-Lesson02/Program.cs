@@ -8,25 +8,46 @@ namespace COMP123_Lesson02
 
         static void Main()
         {
+
+            string[] abilityNames = { "Strength", "Stamina", "Speed", "Toughness", "Intelligence" };
+            string characterName = "Hulk";
             int strength;
             int stamina = 10;
             int speed = 5;
             int toughness = 12;
             int intelligence = 2;
 
-            setAbility(out strength, 50);
+            string consoleAbility;
 
+            showAbilityNames("-*-*-*-*-",abilityNames);
+
+            //setAbility(out strength, 50);
+
+            Console.WriteLine("Enter your ability score:");
+            consoleAbility = Console.ReadLine();
+
+            int.TryParse(consoleAbility, out strength);
 
             Console.WriteLine("Strength in main before: {0}", strength);
 
 
-            increaseAbility( ref strength, "Strength");
+            increaseAbility( ref strength, abilityNames[0]);
 
 
             Console.WriteLine("Strength in main after: {0}", strength);
 
             Console.WriteLine("Press any key to exit");
             Console.ReadKey();
+        }
+
+        // Displays ability names passed into the method
+        private static void showAbilityNames(string separator, params string[] abilities)
+        {
+            foreach (string ability in abilities)
+            {
+                Console.WriteLine(ability);
+                Console.WriteLine(separator);
+            }
         }
 
 
